@@ -11,26 +11,76 @@ class OriginSeeder extends Seeder
     public function run(): void
     {
         $origins = [
-            ['name' => 'Borneo Highlands', 'region_code' => 'BRN-HL', 'country' => 'Malaysia', 'description' => 'Pristine highland rainforest region.'],
-            ['name' => 'Western Ghats', 'region_code' => 'IND-WG', 'country' => 'India', 'description' => 'Biodiversity hotspot along India\'s western coast.'],
-            ['name' => 'Amazon Basin', 'region_code' => 'BRA-AM', 'country' => 'Brazil', 'description' => 'World\'s largest tropical rainforest.'],
-            ['name' => 'Central Java', 'region_code' => 'IDN-CJ', 'country' => 'Indonesia', 'description' => 'Volcanic soil regions with rich forest cover.'],
-            ['name' => 'Local Nursery', 'region_code' => 'LOCAL', 'country' => null, 'description' => 'Seeds sourced from our own nursery stock.'],
-            ['name' => 'Congo Basin', 'region_code' => 'COD-CB', 'country' => 'DR Congo', 'description' => 'Africa\'s largest contiguous forest.'],
+            [
+                'name' => 'Sibu, Sarawak',
+                'region_code' => 'SWK-SBU',
+                'country' => 'Malaysia',
+                'description' => 'Lowland peat swamp and mixed dipterocarp forest region along the Rejang River basin.',
+            ],
+            [
+                'name' => 'Bintulu, Sarawak',
+                'region_code' => 'SWK-BTU',
+                'country' => 'Malaysia',
+                'description' => 'Coastal region with extensive planted forests and Sarawak Forestry Corporation nurseries.',
+            ],
+            [
+                'name' => 'Kuching, Sarawak',
+                'region_code' => 'SWK-KCH',
+                'country' => 'Malaysia',
+                'description' => 'Capital division of Sarawak with kerangas and mixed dipterocarp forest zones.',
+            ],
+            [
+                'name' => 'Sandakan, Sabah',
+                'region_code' => 'SBH-SDK',
+                'country' => 'Malaysia',
+                'description' => 'Major timber town with access to Sepilok and Kabili-Sepilok virgin jungle reserve.',
+            ],
+            [
+                'name' => 'Kota Kinabalu, Sabah',
+                'region_code' => 'SBH-KK',
+                'country' => 'Malaysia',
+                'description' => 'Highland and lowland forest regions near Mount Kinabalu, rich in endemic species.',
+            ],
+            [
+                'name' => 'Semengoh, Sarawak',
+                'region_code' => 'SWK-SMG',
+                'country' => 'Malaysia',
+                'description' => 'Site of the Semengoh Forest Nursery and seed bank, primary local seedling source.',
+            ],
         ];
 
         foreach ($origins as $o) {
-            $origin = Origin::create($o);
+            Origin::create($o);
         }
 
-        // Set origin price multipliers
+        // Origin price multipliers reflect rarity and logistics cost of sourcing from each region.
+        // - Semengoh (local nursery stock) is the baseline at 1.00×
+        // - Remote or ecologically sensitive origins carry a premium
         $multipliers = [
-            'BRN-HL' => ['multiplier' => 1.75, 'notes' => 'Premium highland genetics'],
-            'IND-WG' => ['multiplier' => 1.30, 'notes' => 'Biodiversity hotspot premium'],
-            'BRA-AM' => ['multiplier' => 2.00, 'notes' => 'Rare Amazonian cultivar premium'],
-            'IDN-CJ' => ['multiplier' => 1.15, 'notes' => 'Volcanic soil advantage'],
-            'LOCAL' => ['multiplier' => 1.00, 'notes' => 'Standard local pricing'],
-            'COD-CB' => ['multiplier' => 1.50, 'notes' => 'African forest genetics premium'],
+            'SWK-SBU' => [
+                'multiplier' => 1.10,
+                'notes' => 'Nearby lowland source; slight transport markup from Sibu.',
+            ],
+            'SWK-BTU' => [
+                'multiplier' => 1.00,
+                'notes' => 'Well-established plantation supply chain; no premium.',
+            ],
+            'SWK-KCH' => [
+                'multiplier' => 1.05,
+                'notes' => 'Close proximity to main nursery; minimal logistics cost.',
+            ],
+            'SBH-SDK' => [
+                'multiplier' => 1.30,
+                'notes' => 'Cross-state transport from Sabah; premium wild-collected genetics from virgin jungle reserve.',
+            ],
+            'SBH-KK' => [
+                'multiplier' => 1.50,
+                'notes' => 'Highland provenance near Mount Kinabalu; rare endemic genetics, difficult collection terrain.',
+            ],
+            'SWK-SMG' => [
+                'multiplier' => 1.00,
+                'notes' => 'Local nursery baseline — seeds and seedlings from our own Semengoh facility.',
+            ],
         ];
 
         foreach ($multipliers as $code => $data) {

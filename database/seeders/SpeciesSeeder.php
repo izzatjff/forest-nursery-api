@@ -10,14 +10,41 @@ class SpeciesSeeder extends Seeder
     public function run(): void
     {
         $species = [
-            ['name' => 'Teak', 'scientific_name' => 'Tectona grandis', 'description' => 'Tropical hardwood tree prized for durable timber.', 'base_price' => 15.00, 'low_stock_threshold' => 50],
-            ['name' => 'Mahogany', 'scientific_name' => 'Swietenia macrophylla', 'description' => 'Large tropical tree known for reddish-brown timber.', 'base_price' => 25.00, 'low_stock_threshold' => 30],
-            ['name' => 'Neem', 'scientific_name' => 'Azadirachta indica', 'description' => 'Fast-growing tree with medicinal properties.', 'base_price' => 8.00, 'low_stock_threshold' => 100],
-            ['name' => 'Banyan', 'scientific_name' => 'Ficus benghalensis', 'description' => 'Large fig tree with aerial roots.', 'base_price' => 12.00, 'low_stock_threshold' => 20],
-            ['name' => 'Sandalwood', 'scientific_name' => 'Santalum album', 'description' => 'Slow-growing tree valued for fragrant heartwood.', 'base_price' => 50.00, 'low_stock_threshold' => 15],
-            ['name' => 'Bamboo', 'scientific_name' => 'Bambusa vulgaris', 'description' => 'Fast-growing giant grass used for construction.', 'base_price' => 5.00, 'low_stock_threshold' => 200],
-            ['name' => 'Eucalyptus', 'scientific_name' => 'Eucalyptus globulus', 'description' => 'Fast-growing tree used for timber and essential oils.', 'base_price' => 10.00, 'low_stock_threshold' => 75],
-            ['name' => 'Rosewood', 'scientific_name' => 'Dalbergia sissoo', 'description' => 'Premium timber tree with beautiful grain patterns.', 'base_price' => 35.00, 'low_stock_threshold' => 20],
+            [
+                'name' => 'Acacia',
+                'scientific_name' => 'Acacia mangium',
+                'description' => 'Fast-growing tropical hardwood widely planted in Sarawak for reforestation and timber production. Thrives in degraded soils and is commonly used in plantation forestry.',
+                'base_price' => 1.50,
+                'low_stock_threshold' => 200,
+            ],
+            [
+                'name' => 'Batai',
+                'scientific_name' => 'Paraserianthes falcataria',
+                'description' => 'One of the fastest-growing tropical trees, commonly planted for pulpwood, light construction timber, and shade. Native to the Moluccas and widely cultivated across Borneo.',
+                'base_price' => 2.00,
+                'low_stock_threshold' => 150,
+            ],
+            [
+                'name' => 'Belian / Borneo Ironwood',
+                'scientific_name' => 'Eusideroxylon zwageri',
+                'description' => 'Legendary ironwood of Borneo, prized for its extreme durability and resistance to rot. A slow-growing, endangered dipterocarp that can live over 1,000 years. Traditionally used for longhouse construction and shingle roofing.',
+                'base_price' => 50.00,
+                'low_stock_threshold' => 10,
+            ],
+            [
+                'name' => 'Engkabang Jantong',
+                'scientific_name' => 'Shorea macrophylla',
+                'description' => 'A dipterocarp species native to Borneo valued for its illipe nut oil and quality timber. Important for both commercial agroforestry and biodiversity conservation in Sarawak.',
+                'base_price' => 15.00,
+                'low_stock_threshold' => 30,
+            ],
+            [
+                'name' => 'Kelampayan',
+                'scientific_name' => 'Neolamarckia cadamba',
+                'description' => 'Fast-growing pioneer species native to Southeast Asia. Used for lightweight timber, plywood, and paper pulp. Produces distinctive orange ball-shaped flowers attractive to pollinators.',
+                'base_price' => 5.00,
+                'low_stock_threshold' => 100,
+            ],
         ];
 
         foreach ($species as $s) {
